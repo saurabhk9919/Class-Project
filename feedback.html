@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews Section</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .star {
+      color: gold;
+      cursor: pointer;
+    }
+    .review-box {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">User Reviews</h1>
+    
+    <!-- Submit Feedback Section -->
+    <div class="review-box">
+      <h3>Write Your Feedback</h3>
+      <form id="reviewForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Your Name</label>
+          <input type="text" id="username" class="form-control" placeholder="Enter your name" required>
+        </div>
+        <div class="mb-3">
+          <label for="rating" class="form-label">Your Rating</label>
+          <div id="stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <input type="hidden" id="rating" required>
+        </div>
+        <div class="mb-3">
+          <label for="feedback" class="form-label">Your Feedback</label>
+          <textarea id="feedback" class="form-control" rows="3" placeholder="Write your feedback..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      </form>
+    </div>
+
+    <div id="reviews" class="mt-4">
+      <h3>What Others Say</h3>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    const reviewsContainer = document.getElementById('reviews');
+    const stars = document.querySelectorAll('.star');
+    let selectedRating = 0;
+
+
+    stars.forEach((star) => {
+      star.addEventListener('click', () => {
+        selectedRating = star.dataset.value;
+        document.getElementById('rating').value = selectedRating;
+        stars.forEach((s, index) => {
+          s.style.color = index < selectedRating ? 'gold' : 'gray';
+        });
+      });
+    });
+
+    
+    document.getElementById('reviewForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('username').value;
+      const feedback = document.getElementById('feedback').value;
+      
+      if (!selectedRating) {
+        alert('Please select a rating.');
+        return;
+      }
+
+      // Create a new review card
+      const reviewCard = document.createElement('div');
+      reviewCard.classList.add('review-box');
+      reviewCard.innerHTML = `
+        <h5>${name}</h5>
+        <p>${'★'.repeat(selectedRating)} ${'☆'.repeat(5 - selectedRating)}</p>
+        <p>${feedback}</p>
+      `;
+      reviewsContainer.appendChild(reviewCard);
+
+      // Clear form
+      document.getElementById('reviewForm').reset();
+      selectedRating = 0;
+      stars.forEach((s) => (s.style.color = 'gray'));
+    });
+  </script>
+</body>
+</html>

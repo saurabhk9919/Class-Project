@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Reservation</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 50px;
+            margin: 0;
+            background-image: url('pictures/Camping.jpeg');
+
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            transition: background-position 0.5s ease;
+        }
+        
+        body:hover {
+            background-position: calc(50% + 20px) calc(50% + 20px);
+        }
+
+        .container {
+            color: #fff9f9;
+            width: 40%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(32, 34, 41, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fefefe;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 96%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #fffefe;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3e0da5;
+            color: #f5f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #f09819, #ff512f);
+            box-shadow: 0 0 20px rgba(255, 81, 47, 0.8), 0 0 20px rgba(240, 152, 25, 0.8);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Make a Reservation</h1>
+        <form id="reservationForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+            
+            <label for="package">Select Package:</label>
+            <select id="package" required>
+                <option value="">Select a package</option>
+                <option value="1">Kashmir</option>
+                <option value="2">Taj Mahal</option>
+                <option value="4">Paris</option>
+                <option value="5">Sydney</option>
+                <option value="6">Tokyo</option>
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="people">Number of People:</label>
+            <input type="number" id="people" required>
+
+            <label for="comments">Additional Requests/Comments</label>
+            <textarea id="comments" rows="4" cols="50"></textarea>
+        
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('reservationForm');
+        
+        form.addEventListener('submit', function(event) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const package = document.getElementById('package').value;
+            const date = document.getElementById('date').value;
+            const people = document.getElementById('people').value;
+
+            if (!name || !email || !phone || !package || !date || !people) {
+                event.preventDefault(); 
+                alert('Please fill out all required fields.');
+            } else {
+                alert('Congratulations! Your reservation has been successfully submitted.');
+            }
+        });
+
+        document.body.addEventListener("click", function (e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+        });
+    </script>
+</body>
+</html>

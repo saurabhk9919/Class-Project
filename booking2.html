@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background: url('pictures/beech.jpeg') no-repeat center center;
+      background-size: cover;
+      height: 50vh;
+      color: rgb(46, 48, 7);
+      text-align: center;
+      padding: 150px 20px;
+    }
+    .hero-section h1 {
+      font-size: 3rem; 
+      font-weight: bold; 
+    }
+    .hero-section p {
+      font-size: 1.5rem; 
+      margin-top: 20px; 
+    }
+    .booking-container {
+      margin-top: -30px;
+    }
+    .booking-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    .booking-card h3 {
+      font-size: 2rem;
+    }
+    .form-control, .btn-primary {
+      margin-top: 10px;
+    }
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
+    }
+    .faq-section {
+      background-color: #f8f9fa;
+      padding: 30px 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(45deg, rgb(94, 189, 237), rgb(0, 123, 255)); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="TTravel.html">
+        <img src="pictures/Web2logo.png" alt="FunTripLogo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="TTravel.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="reservation .html">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#faq">FAQ's</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Book Your Dream Vacation Now</h1>
+    <p>Seize the opportunity and create unforgettable memories with our special travel packages!</p>
+  </div>
+
+  <!-- Booking Form -->
+  <div class="container booking-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card booking-card">
+          <h3 class="text-center">Confirm Your Booking</h3>
+          <form action="#" method="POST" onsubmit="return validateForm()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+              <label for="offer" class="form-label">Select Your Offer</label>
+              <select class="form-select" id="offer" required>
+                <option value="" disabled selected>Choose an offer</option>
+                <option value="char-dhaam-yatra">Char Dhaam Yatra</option>
+                <option value="mountain-adventure">Mountain Adventure</option>
+                <option value="jungle-safari">Jungle Safari</option>
+                <option value="friends-forever">Friends Forever</option>
+                <option value="beach-getaway">Beach Getaway</option>
+                <option value="historical-journey">Historical Journey</option>
+                <option value="luxury-cruise">Luxury Cruise</option>
+                <option value="romantic-retreat">Romantic Retreat</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="date" class="form-label">Travel Date</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary w-50">Confirm Booking</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="container my-5 faq-section" id="faq">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+      <!-- Question 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            What is the booking process?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            To book a trip, simply fill in your details, select your offer, and choose your preferred travel date. Once you confirm, your booking will be submitted.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Can I change my booking details after confirming?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, you can change your booking details by contacting our customer support. Changes may be subject to availability and terms.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            What is included in the travel packages?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Each package includes transportation, accommodation, and a variety of activities based on the selected offer. Specific details are available on each package page.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Are there any discounts for group bookings?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, we offer group discounts. Please contact us for more information on group booking rates and availability.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 FunTrip. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+      document.querySelectorAll('.error-message').forEach(function (element) {
+        element.textContent = '';
+      });
+
+      const name = document.getElementById('name').value;
+      if (name.trim() === '') {
+        alert('Please enter your name.');
+        isValid = false;
+      }
+      const email = document.getElementById('email').value;
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!email.match(emailPattern)) {
+        alert('Please enter a valid email address.');
+        isValid = false;
+      }
+
+      const phone = document.getElementById('phone').value;
+      const phonePattern = /^[0-9]{10}$/;
+      if (!phone.match(phonePattern)) {
+        alert('Please enter a valid phone number.');
+        isValid = false;
+      }
+      const offer = document.getElementById('offer').value;
+      if (offer === '') {
+        alert('Please select an offer.');
+        isValid = false;
+      }
+
+      const date = document.getElementById('date').value;
+      if (date === '') {
+        alert('Please select a travel date.');
+        isValid = false;
+      }
+      if (isValid) {
+        alert('Your booking has been successfully submitted!');
+      }
+      return isValid;
+    }
+  </script>
+</body>
+</html>
