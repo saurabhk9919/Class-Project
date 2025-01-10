@@ -8,7 +8,7 @@ CSS
 <br>
 Bootstrap 
 <br>
-JavaScript
+JavaScript(Basic)
 <br>
 ## Project Screenshot
 
